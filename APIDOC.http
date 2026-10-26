@@ -1,0 +1,118 @@
+#api call for create admin account
+###
+POST  http://127.0.0.1:8000/cinema/admin/
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "email":"admin@gmail.com",
+    "password":"admin@123",
+    "phone":2345456754
+    
+}
+
+# api call for  create user account
+###
+POST http://127.0.0.1:8000/cinema/admin/
+Content-Type: application/json
+
+{
+    "username":"user",
+    "email":"user@gmail.com",
+    "password":"user@123",
+    "phone":9876546756
+    
+}
+
+# api call for token in admin
+###
+POST http://127.0.0.1:8000/cinema/token/
+Content-Type: application/json
+
+{
+    "username":"admin",
+    "password":"admin@123"
+}
+
+
+=======================Films end point============================
+
+# api call for listing
+###
+GET http://127.0.0.1:8000/films/all/
+Accept: application/json
+Authorization: Token ab0a7bb97779ed906a53502fa748a607069eb9cf
+
+# api call for create add
+###
+POST http://127.0.0.1:8000/films/add/
+Content-Type: application/json
+Authorization: Token ab0a7bb97779ed906a53502fa748a607069eb9cf
+
+{
+    "title": "Manjummel Boys",
+    "description": "Manjummel Boys is a Malayalam survival thriller based on ",
+    "release_date": "2024-02-22",
+    "language":"Malayalam",
+    "genre":"thriller",
+    "director": "Chidambaram",
+    "cast":"Soubin Shahir, Sreenath Bhasi, Balu Varghese"
+
+}
+
+#api call for retrieve
+###
+GET http://127.0.0.1:8000/films/movies/2/
+Accept: application/json
+Authorization: Token ab0a7bb97779ed906a53502fa748a607069eb9cf
+
+
+# api call for update
+###
+PUT http://127.0.0.1:8000/films/movies/2/
+Content-Type: application/json
+Authorization: Token ab0a7bb97779ed906a53502fa748a607069eb9cf
+
+{
+  "id": 2,
+  "title": "Premalu",
+  "description": "Sachin, a young man, travels to Hyderabad and falls in love. Sangeeth Prathap, Shyam Mohan",
+  "release_date": "2024-02-09",
+  "language": "Malayalam",
+  "genre": "romance",
+  "director": "Girish A. D",
+  "cast": "Naslen, Mamitha Baiju",
+  "created_at": "2026-10-26T16:09:30.550433Z",
+  "updated_at": "2026-10-26",
+  "created_by": 1
+}
+
+
+# api call for delete
+###
+DELETE http://127.0.0.1:8000/films/movies/3/
+Accept: application/json
+Authorization: Token ab0a7bb97779ed906a53502fa748a607069eb9cf
+
+
+
+======================================================
+
+# api call for create add
+###
+POST http://127.0.0.1:8000/songs/movie/2/
+Content-Type: application/json
+Authorization: Token ab0a7bb97779ed906a53502fa748a607069eb9cf
+
+{
+    "title": "Malare",
+    "album": "Premam",
+    "singer": "Vijay Yesudas",
+    "music_director": "Rajesh Murugesan",
+    "language": "Malayalam",
+    "genre": "Melody",
+    "release_date": "2015-05-15",
+    "duration": 285,
+    "lyrics": "A romantic song from Premam",
+    "audio":
+}
