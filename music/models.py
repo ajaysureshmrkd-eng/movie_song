@@ -72,7 +72,7 @@ class song(models.Model):
 
         if last_object:
 
-            self.track_number =last_object =+1
+            self.track_number =last_object.track_number =+1
 
         else:
 
