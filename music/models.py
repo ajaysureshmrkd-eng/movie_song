@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
 
 from films.models import movie
 
@@ -9,7 +8,7 @@ from cinema.models import User
 
 # Create your models here.
 
-class Musics(models.Model):
+class song(models.Model):
 
     LANGUAGE_CHOICES = [
         ('Malayalam', 'Malayalam'),
@@ -53,8 +52,7 @@ class Musics(models.Model):
 
     lyrics = models.TextField()
 
-
-    question_number =models.PositiveBigIntegerField(default=0)
+    track_number =models.PositiveBigIntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -70,15 +68,15 @@ class Musics(models.Model):
 
     def save(self, *args,**kwargs):
 
-        last_object =Musics.objects.filter(movie=self.movie).last()
+        last_object =song.objects.filter(movie=self.movie).last()
 
         if last_object:
 
-            self.question_number =last_object =+1
+            self.track_number =last_object =+1
 
         else:
 
-            self.question_number =1
+            self.track_number =1
 
 
         return super().save( *args,**kwargs)

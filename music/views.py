@@ -1,16 +1,18 @@
 from django.shortcuts import render
 
-from rest_framework.generics import CreateAPIView
+# Create your views here.
+from rest_framework.generics import CreateAPIView,RetrieveAPIView,UpdateAPIView,DestroyAPIView
 from rest_framework import authentication,permissions
 from rest_framework.response import Response
 
-from songs.serializers import MusicSerializer
+from music.serializers import SongSerializer
 from films.models import movie
+from music.models import song
 
 # Create your views here.
 
 
-class MusicCreateView(CreateAPIView):
+class SongCreateView(CreateAPIView):
 
     authentication_classes=[authentication.TokenAuthentication]
 
@@ -25,7 +27,7 @@ class MusicCreateView(CreateAPIView):
 
         form_data = request.data
 
-        serializer_inst = MusicSerializer(data=form_data)
+        serializer_inst = SongSerializer(data=form_data)
 
         if serializer_inst.is_valid():
 
@@ -38,4 +40,12 @@ class MusicCreateView(CreateAPIView):
             return Response (data=serializer_inst.errors)
 
 
-# class MusicsRetrieveUpdateDeleteView()
+class SongRetrieveUpdateDeleteView(RetrieveAPIView,UpdateAPIView,DestroyAPIView):
+
+    authentication_classes =[authentication.TokenAuthentication]
+
+    permission_classes =[permissions.IsAdminUser]
+
+    serializer_class =SongSerializer
+
+    queryset =song.objects.all()
